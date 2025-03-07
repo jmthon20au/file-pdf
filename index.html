@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+      <link rel="icon" type="image/ico" href="prev.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقسيم صفحات PDF</title>
+        <!-- Meta tags for link preview -->
+    <meta name="description" content="تقسيم صفحات ملف PDF ">
+    <meta property="og:title" content="خدمات شامل">
+    <meta property="og:description" content="في هذا الموقع البسيط يمكنك تقسيم ملفك الى نصفين صفحات الامامية و الصفحات الخلفية لكي تستفاد منها في عملية الطباعة">
+    <meta property="og:image" content="prev.ico">
+    <meta property="og:url" content="https://www.file-pdf.free.nf">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>تقسيم صفحات PDF</h1>
+        <form id="pdfForm">
+            <label for="pdfFile" class="upload-label">اختر ملف PDF:</label>
+            <input type="file" id="pdfFile" accept="application/pdf" required>
+
+            <div id="fileInfo" class="file-info" style="display:none;">
+                <p>حجم الملف: <span id="fileSize"></span></p>
+                <p>عدد الصفحات: <span id="filePages"></span></p>
+            </div>
+
+            <label for="fileName">أدخل اسم الملف (دون امتداد):</label>
+            <input type="text" id="fileName" placeholder="اسم الملف" required>
+
+            <label for="pageType">اختر الصفحات:</label>
+            <select id="pageType" required>
+                <option value="front">الصفحات الأمامية</option>
+                <option value="back">الصفحات الخلفية</option>
+            </select>
+
+            <div id="afterSplitInfo" style="display:none;">
+                <p>حجم الملف بعد التقسيم: <span id="afterSize"></span></p>
+                <p>عدد الصفحات بعد التقسيم: <span id="afterPages"></span></p>
+            </div>
+
+            <button type="submit" id="downloadBtn">تنزيل</button>
+        </form>
+
+        <div id="progressContainer" style="display:none;">
+            <p id="progressText">جاري التحميل...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <img src="loading.gif" id="loadingIcon" alt="تحميل..." class="loading-icon">
+        </div>
+
+        <button id="restoreBtn" style="display:none;">استعادة الملف</button>
+
+        <div id="fileInfoAfter" style="display:none;">
+            <p id="beforeSize">حجم الملف قبل التقسيم: <span></span></p>
+            <p id="afterSizeFinal">حجم الملف بعد التقسيم: <span></span></p>
+            <p id="beforePages">عدد الصفحات قبل التقسيم: <span></span></p>
+            <p id="afterPagesFinal">عدد الصفحات بعد التقسيم: <span></span></p>
+        </div>       
+        
+    </div>
+        <footer style="
+    background-color: #000;
+    border-radius: 60px;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    font-family: 'Arial', sans-serif;">
+    
+    <!-- النص المتحرك -->
+    <p id="auto-text" style="margin: 0;"></p>
+
+    <!-- اسم المطور مع الأيقونة -->
+    <div style="display: flex; align-items: center; gap: 8px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png" 
+            alt="Developer Icon" 
+            style="width: 20px; height: 20px;">
+        <a href="https://www.ali-altaee.free.nf" 
+            target="_blank" 
+            style="color: #00d9ff; text-decoration: none; font-weight: bold;">
+            Ali Altaee
+        </a>
+    </div>
+</footer>
+
+<script>
+    const text = 'جميع الحقوق محفوظة © 2025 ';
+    let index = 0;
+    const autoText = document.getElementById('auto-text');
+
+    function autoType() {
+        autoText.textContent += text[index];
+        index++;
+        if (index < text.length) {
+            setTimeout(autoType, 100);
+        } else {
+            autoText.innerHTML += `<a href="https://your-portfolio-link.com" 
+                                    target="_self" 
+                                    style="color: #00d9ff; text-decoration: none; font-weight: bold;">
+                                    
+                                   </a>`;
+        }
+    }
+    autoType();
+</script>
+</div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
